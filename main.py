@@ -1,5 +1,4 @@
 
-#C:\Program Files (x86)
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
@@ -33,7 +32,6 @@ search.send_keys(Keys.RETURN)
 time.sleep(2)
 
 main = driver.find_elements(By.CLASS_NAME, "hfpxzc")
-# print(main.text)
 
 time.sleep(1)
 
@@ -42,18 +40,17 @@ print("main", len(main))
 
 time.sleep(1)
 
-# for i in range(4, lenMain):
-#     print(main[(i * 5) + 3].text)
-
-# for i in range(len(main)):
-#     print(main[i].aria_role)
-
 links = [elem.get_attribute('href') for elem in main]
-# print(links)
 driver.get(links[0])
 
-directions = driver.find_elements(By.CSS_SELECTOR, "[aria-label=Directions to Fred Meyer]")
+directions = driver.find_element(By.CSS_SELECTOR, "[aria-label='Directions to Fred Meyer']")
 print(directions)
+directions.click()
+
+time.sleep(2)
+
+directionsStart = driver.find_element(By.ID, "section-directions-trip-0")
+directionsStart.click()
 
 time.sleep(10)
 
